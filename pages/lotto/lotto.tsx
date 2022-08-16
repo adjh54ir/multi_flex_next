@@ -44,6 +44,7 @@ const LottoComponent = () => {
         const _resultArr = _resultTotalArr.filter((item) => item.sort((a, b) => a - b));
         setLottoGameResult(_resultArr);
         console.log(_resultArr);
+        console.log(_resultArr);
     };
 
 
