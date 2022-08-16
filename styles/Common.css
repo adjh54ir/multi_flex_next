@@ -1,0 +1,21 @@
+@charset "utf-8";
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+.contents {
+	background-color: #fff;
+	margin: 0 auto;
+	border-radius: 10px;
+	word-break: keep-all;
+}
+
+main {
+	min-height: 100vh;
+	padding-top: 77px;
+	background-color: #f8f8fa;
+	padding-bottom: 100px;
+}
+.margin-bottom {
+	margin-bottom: 30px;
+}
+.margin-left {
+	margin-left: 10px;
+}

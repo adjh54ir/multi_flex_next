@@ -6,17 +6,20 @@ const Header = () => {
     };
     return (
         <div>
-            <Link href="/">
-                <a style={linkStyle}>Home</a>
+            <Link href="/lotto/lotto">
+                <a style={linkStyle}>로또</a>
             </Link>
-            <Link href="/about">
-                <a style={linkStyle}>About</a>
+            <Link href="/user/userAddSucess">
+                <a style={linkStyle}>회원가입 완료</a>
             </Link>
-            <Link href="/test/Test1">
-                <a style={linkStyle}>Test1</a>
+            <Link href="/user/userEmailCfm">
+                <a style={linkStyle}>이메일 인증</a>
             </Link>
-            <Link href="/test/Test2">
-                <a style={linkStyle}>Test2</a>
+            <Link href="/user/userPwNewChange">
+                <a style={linkStyle}>비밀번호 변경</a>
+            </Link>
+            <Link href="/user/userPwReSetting">
+                <a style={linkStyle}>비밀번호 재 설정</a>
             </Link>
         </div>
     )
