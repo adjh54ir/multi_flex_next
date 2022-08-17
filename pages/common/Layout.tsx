@@ -6,11 +6,17 @@ const layoutStyle = {
     border: '1px solid #DDD'
 }
 
-const Layout = (props: any) => (
-    <div style={layoutStyle}>
-        <Header />
-        {props.children}
-    </div>
-)
+type AppLayoutProps = {
+    children: React.ReactNode;
+};
 
+
+const Layout = ({ children }: AppLayoutProps) => {
+    return (
+        <div className='.container mx-auto'>
+            <Header />
+            {children}
+        </div>
+    )
+}
 export default Layout
