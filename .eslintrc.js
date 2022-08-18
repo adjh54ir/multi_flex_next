@@ -4,8 +4,8 @@
  * @version: 2.0
  */
 module.exports = {
-	extends: ['eslint:recommended', 'plugin:react/recommended', 'prettier'],
-	plugins: ['react', 'prettier', 'react-hooks'],
+	extends: ['eslint:recommended', 'plugin:react/recommended', 'prettier', 'next/core-web-vitals'],
+	plugins: ['react', 'prettier'],
 
 	/**
 	 * @description : 작업규칙
@@ -17,7 +17,7 @@ module.exports = {
 		/**
 		 * @description: React-Hook Rules
 		 */
-		'react-hooks/rules-of-hooks': 'error',
+		'react-hooks/rules-of-hooks': 'off',
 
 		// useEffect return 관련 체크
 		'react-hooks/exhaustive-deps': 'warn',

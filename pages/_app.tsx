@@ -1,5 +1,5 @@
 import React from 'react';
-import AppLayout from './common/Layout';
+import Layout from './common/Layout';
 import "tailwindcss/tailwind.css";
 import "../styles/globals.css"
 
@@ -9,9 +9,9 @@ type AppProps = {
 
 function App({ Component }: AppProps) {
   return (
-    <AppLayout>
+    <Layout>
       <Component />
-    </AppLayout>
+    </Layout>
   );
 }
 
