@@ -6,15 +6,54 @@ const coding0818 = () => {
 
 	/**
 	 * [프로그래머스-3] 시저의 암호
+	 * 조건 a -> z -> a / A -> Z -> A
+	 * charCodeAt: string.charCodeAt(string 인덱스); // "happy".charCodeAt(0) - 104
+	 * fromCharCode : String.fromCharCode(ASCII 번호) // String.fromCharCode(65) - A
 	 */
 	const fn_question3 = () => {
-		var answer = '';
-		const s = 'a B z';
+		// const s = 'a B z';
+		const s = 'AB';
 		const n = 1;
+		let answer = '';
+		let asciiCodeArr: any[] = [];
 
-		const empty = s.replace(/ /g, '');
-		console.log(empty);
+		// [STEP1] 문자열을 ASCII 코드 형태로 변형한다.
+		s.split('').map((item, idx) => {
+			// 공백은 제외한다.
+			if (item !== ' ') {
+				asciiCodeArr.push(s.charCodeAt(idx));
+			} else {
+				asciiCodeArr.push('');
+			}
+		});
+		// [97, '', 66, '', 122]
 
+		// [STEP2] 아스키 코드 전체 -> 문자열 변환
+		let resultConverStr = '';
+
+		asciiCodeArr.map((item) => {
+			console.log(item);
+			if (item !== '') {
+				const intItem = parseInt(item); // org 아스키코드 번호(string -> number 파싱)
+				let asciiNum = intItem + n; // ASCII 코드 이동(n) 값
+				// [CASE1] 대문자 인 경우
+				if (intItem >= 65 && intItem <= 90) {
+					if (asciiNum > 90) asciiNum = asciiNum - 90 + 64; // 소문자가 넘어가는 경우 91 = 91 - 90 + 65
+				}
+				// [CASE2] 소문자 인 경우
+				else if (intItem >= 97 && intItem <= 122) {
+					if (asciiNum > 122) asciiNum = asciiNum - 122 + 96; // 대문자가 넘어가는 경우 124 = 124 - 122 + 97
+				}
+				// 최종 값 추가
+				resultConverStr += String.fromCharCode(asciiNum);
+			}
+			// 공백일 경우
+			else {
+				resultConverStr += ' ';
+			}
+		});
+		answer = resultConverStr.trim();
+		console.log(answer);
 		return answer;
 	};
 
