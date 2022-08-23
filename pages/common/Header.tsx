@@ -38,22 +38,9 @@ const Header = () => {
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/coding/coding0820">
+                                <Link href="/coding/coding0823">
                                     <a href="#" className={headerContent}>coding</a>
                                 </Link>
-                            </li>
-                            <li>
-                                <Link href="/">
-                                    <a href="#" className={headerContent}>Marketplace</a>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/">
-                                    <a href="#" className={headerContent}>Marketplace</a>
-                                </Link>
-                            </li>
-                            <li>
-                                <a href="#" className={headerContent}>Marketplace</a>
                             </li>
                         </ul>
                     </div>
