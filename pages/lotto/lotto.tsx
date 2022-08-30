@@ -62,72 +62,58 @@ const LottoComponent = () => {
 			</div>
 
 			{/* contents */}
-			<div className='margin-bottom'>
-				<label htmlFor='countries' className='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400'>
-					게임 횟수
-				</label>
-				<select
-					id='countries'
-					className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-					onChange={(e) => setLottoGameCnt(parseInt(e.target.value))}>
-					<option selected>게임을 선택하시오</option>
-					<option value={1}>1 게임</option>
-					<option value={3}>3 게임</option>
-					<option value={5}>5 게임</option>
-					<option value={10}>10 게임</option>
-				</select>
-
-				<div className='inline-flex rounded-md shadow-sm'>
-					<a
-						href='#'
-						aria-current='page'
-						className='py-2 px-4 text-sm font-medium text-blue-700 bg-white rounded-l-lg border border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white'>
-						Profile
-					</a>
-					<a
-						href='#'
-						className='py-2 px-4 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white'>
-						Settings
-					</a>
-					<a
-						href='#'
-						className='py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-r-md border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white'>
-						Messages
-					</a>
+			<div className='overflow-x-auto relative mt-10'>
+				<div className='mt-10'>
+					<label htmlFor='countries' className='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400'>
+						게임 횟수
+					</label>
+					<select
+						id='countries'
+						className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+						onChange={(e) => setLottoGameCnt(parseInt(e.target.value))}>
+						<option selected>게임을 선택하시오</option>
+						<option value={1}>1 게임</option>
+						<option value={3}>3 게임</option>
+						<option value={5}>5 게임</option>
+						<option value={10}>10 게임</option>
+					</select>
 				</div>
-
-				<button
-					type='button'
-					className='text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800'
-					onClick={fn_generateLotto}>
-					게임 생성
-				</button>
-				<button
-					type='button'
-					className='text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900'
-					onClick={() => setLottoGameResult([])}>
-					게임 초기화
-				</button>
+				<div className='mt-10'>
+					<button
+						type='button'
+						className='text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800'
+						onClick={fn_generateLotto}>
+						게임 생성
+					</button>
+					<button
+						type='button'
+						className='text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900'
+						onClick={() => setLottoGameResult([])}>
+						게임 초기화
+					</button>
+				</div>
 			</div>
 
 			<div className='margin-bottom'>
-				<label className='margin-bottom'>로또 결과 </label>
-				<div>
-					{lottoGameResult.length === 0 ? (
-						<input type='text' value='게임을 생성해보세요~!' readOnly />
-					) : (
-						lottoGameResult.map((item, index) => {
-							return (
-								<div key={`lottoList-${index}`}>
-									<input type='text' value={item.join(' ')} readOnly />
-									<button type='button' className='margin-left' onClick={(e) => fn_lottoCopy(e)}>
-										복사하기{' '}
-									</button>
-									<br />
-								</div>
-							);
-						})
-					)}
+				<div className='mt-5'>
+					<label className='margin-bottom'>로또 결과 </label>
+					<div>
+						{lottoGameResult.length === 0 ? (
+							<input type='text' value='게임을 생성해보세요~!' readOnly />
+						) : (
+							lottoGameResult.map((item, index) => {
+								return (
+									<div key={`lottoList-${index}`}>
+										<input type='text' value={item.join(' ')} readOnly />
+										<button type='button' className='margin-left' onClick={(e) => fn_lottoCopy(e)}>
+											복사하기{' '}
+										</button>
+										<br />
+									</div>
+								);
+							})
+						)}
+					</div>
 				</div>
 			</div>
 
