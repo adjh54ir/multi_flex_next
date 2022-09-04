@@ -1,9 +1,9 @@
 {
 	"name": "multi_flex_next",
 	"version": "0.0.1",
-	"description": "Next.js 기반의 토이프로젝트",
-	"main": "index.js",
 	"private": true,
+	"description": "Typescript + Next.js 기반의 토이 프로젝트",
+	"main": "index.js",
 	"repository": "https://github.com/adjh54ir/multi_flex_next.git",
 	"author": "jonghoon_lee <adjh54ir@gmail.com>",
 	"license": "MIT",
@@ -35,19 +35,27 @@
 		"winwheel": "^1.0.1"
 	},
 	"devDependencies": {
-		"@types/base-64": "^1.0.0",
-		"@types/node": "18.7.2",
+		"@types/node": "18.7.13",
 		"@types/react": "18.0.17",
 		"@types/react-dom": "18.0.6",
+<<<<<<< HEAD
 		"@types/uuid": "^8.3.4",
 		"autoprefixer": "^10.4.8",
 		"eslint": "8.21.0",
+=======
+		"autoprefixer": "^10.4.8",
+		"eslint": "8.23.0",
+>>>>>>> 2a73bea567495acb9bfe04b850f9857e78f01041
 		"eslint-config-next": "12.2.5",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-prettier": "^4.0.0",
 		"postcss": "^8.4.16",
 		"prettier": "^2.7.1",
 		"tailwindcss": "^3.1.8",
+<<<<<<< HEAD
 		"typescript": "4.7.4"
+=======
+		"typescript": "4.8.2"
+>>>>>>> 2a73bea567495acb9bfe04b850f9857e78f01041
 	}
 }
