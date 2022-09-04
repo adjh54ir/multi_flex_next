@@ -62,16 +62,16 @@ const Header = () => {
 								</Link>
 							</li>
 							<li>
-								<Link href='/lotto/lotto'>
+								<Link href='/lotto/main'>
 									<a href='#' className={headerContent}>
 										로또
 									</a>
 								</Link>
 							</li>
 							<li>
-								<Link href={`/coding/Coding${today}`}>
+								<Link href='/lunch/main'>
 									<a href='#' className={headerContent}>
-										coding
+										점심메뉴
 									</a>
 								</Link>
 							</li>
