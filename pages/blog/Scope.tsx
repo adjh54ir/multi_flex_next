@@ -1,12 +1,17 @@
 import { useEffect } from "react";
 
-const Scope = () => {
+// 상위 함수 
+const ScopeComponent = () => {
 
-    useEffect(() => {
-    }, []);
+    const scopeChainVar = "스코프 체인";
+
+    // 하위 함수 
+    const fn_controlScope = () => {
+        console.log(scopeChainVar);     // 렉시컬 스코프 
+    };
 
     return (
         <></>
     )
 }
-export default Scope;
+export default ScopeComponent;

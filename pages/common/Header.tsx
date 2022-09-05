@@ -67,7 +67,7 @@ const Header = () => {
 								</Link>
 							</li>
 							<li>
-								<Link href={`/blog/Scope`}>
+								<Link href={`/blog/scope`}>
 									<a href='#' className={headerContent}>
 										Scope
 									</a>
