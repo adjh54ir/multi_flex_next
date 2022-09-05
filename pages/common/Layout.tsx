@@ -10,7 +10,7 @@ const Layout = ({ children }: AppLayoutProps) => {
 	return (
 		<div>
 			<Header />
-			<div style={{ margin: 20, marginTop: 20, padding: 20 }}>{children}</div>
+			<main style={{ margin: 20, marginTop: 20, padding: 20 }}>{children}</main>
 		</div>
 	);
 };
