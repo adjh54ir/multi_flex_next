@@ -1,9 +1,6 @@
 /* ./styles/globals.css */
-<<<<<<< HEAD
 
 /* tailwind 문법을 이용하여서 css를 적용 */
-=======
->>>>>>> 2a73bea567495acb9bfe04b850f9857e78f01041
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -32,12 +29,8 @@
 		@apply font-semibold;
 	}
 	a {
-<<<<<<< HEAD
 		@apply underline text-blue-600;
 		@apply no-underline text-inherit;
-=======
-		@apply underline text-blue-600 hover:text-blue-800 visited:text-purple-600;
->>>>>>> 2a73bea567495acb9bfe04b850f9857e78f01041
 	}
 }
 
