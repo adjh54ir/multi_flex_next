@@ -74,7 +74,7 @@ const Header = () => {
 							</li>
 
 							<li>
-								<Link href={`/blog/closure`}>
+								<Link href={`/blog/cookie`}>
 									<a href='#' className={headerContent}>
 										블로그 주제 
 									</a>

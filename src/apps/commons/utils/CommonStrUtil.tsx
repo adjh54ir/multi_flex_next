@@ -254,32 +254,49 @@ class CommonStrUtil {
 	};
 
 	/**
-	 * [함수] AWS Publie Burket Insert
-	 * @param {string} fileContent
-	 * @param {string} fileName
-	 * @returns {Promise<number>} 성공(200)
+	 * Cookie의 값을 반환해주는 함수
+	 * @param cookieName
+	 * @returns {string} cookie value
 	 */
-	// insertAWSPublicBurket = async (fileContent: string, fileName: string): Promise<number> => {
-	//     // [STEP1] AWS 연결 환경 구성
-	//     AWS.config.update({
-	//         accessKeyId: "",            // 접근키(AccessKey)
-	//         secretAccessKey: "",        // 비밀키(SecretKey)
-	//         region: ""                  // 리전
-	//     });
+	getCookie = (cookieName: string): string => {
+		// var value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+		// return value ? decodeURIComponent(value[2]) : null;
+	
+		let result = '';
+		// 1. 모든 쿠키를 가져와서 분리 함
+		document.cookie.split(';').map((item) => {
+			// 2. 분리한 값의 앞뒤 공백 제거
+			const cookieItem = item.trim();
+			// 3. 키 값과 매칭이 되는 값을 반환
+			if (item.trim().includes(cookieName)) {
+				result = cookieItem.split('=')[1];
+			}
+		});
+		return result; // 존재하면 값을 반환, 미 존재하면 빈값 반환
+	};
 
-	//     // [STEP2] 환경 구성 데이터로 S3 객체 생성
-	//     const _s3: AWS.S3 = new AWS.S3();
-	//     // [STEP3] 버킷 전송 데이터 환경 설정
-	//     const _burketDataSet: PutObjectRequest = {
-	//         Bucket: "",                         // S3 버킷명
-	//         Key: `Upload/StudyManage/${fileName}`,     // 저장 할 디렉토리 및 파일 명
-	//         Body: fileContent,                           // 파일 정보
-	//     }
-	//     // [STEP3] 버킷 데이터 전송
-	//     const _requestResponse: PromiseResult<AWS.S3.PutObjectOutput, AWS.AWSError> = await _s3.putObject(_burketDataSet).promise();
-	//     // [STEP4] 버킷 데이터 전송 응답 코드
-	//     return _requestResponse.$response.httpResponse.statusCode;
-	// }
+	/**
+	 * Cookie의 값을 세팅해주는 함수
+	 * @param {string} cookieName : 쿠키의 이름
+	 * @param {string} cookieValue : 쿠키의 값
+	 * @param {number} expiresHour : 쿠키의 만료일
+	 * @return {void}
+	 */
+	setCookie = (cookieName: string, cookieValue: string, expiresHour: number): void => {
+		const expired = new Date();
+		expired.setTime(expired.getTime() + expiresHour * 24 * 60 * 60 * 1000);
+		
+		document.cookie = `${cookieName}=${cookieValue}; path=/; Expires=${expired}`;
+	};
+
+	/**
+	 * Cookie의 값을 삭제 해주는 함수
+	 * @param {string} cookieName : 쿠키의 이름
+	 * @return {void}
+	 */
+	deleteCookie = (cookieName: string): void => {
+		document.cookie = `${cookieName}=0; max-age=0`;
+	};
 }
 
 export default new CommonStrUtil();

@@ -5,7 +5,7 @@ const ScopeComponent = () => {
 
     const scopeChainVar = "스코프 체인";
 
-    // 하위 함수 
+    // **하위 함수 
     const fn_controlScope = () => {
         console.log(scopeChainVar);     // 렉시컬 스코프 
     };
