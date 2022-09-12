@@ -66,6 +66,14 @@ const Header = () => {
 								</Link>
 							</li>
 							<li>
+								<Link href='/rockPaperScissors/main'>
+									<a href='#' className={headerContent}>
+										가위바위보
+									</a>
+								</Link>
+							</li>
+
+							<li>
 								<Link href='/lunch/main'>
 									<a href='#' className={headerContent}>
 										점심메뉴
@@ -76,7 +84,7 @@ const Header = () => {
 							<li>
 								<Link href={`/blog/cookie`}>
 									<a href='#' className={headerContent}>
-										블로그 주제 
+										블로그 주제
 									</a>
 								</Link>
 							</li>
