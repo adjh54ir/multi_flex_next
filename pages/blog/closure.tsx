@@ -29,36 +29,19 @@ const closure = () => {
         }
 
         return {
-            increment: (): void => {
+            increment: (num: number): void => {
                 return changeBy(1);
             },
-            decrement: () => {
+            decrement: (num: number) => {
                 return changeBy(-1)
             },
-            value: () => {
+            value: (num: number) => {
                 console.log(count);
                 return count;
             }
         }
     }
 
-    const btnControl = () => {
-
-
-        return {
-            onClick: () => {
-
-            },
-            onChange: () => {
-
-            }
-        }
-
-    }
-
-
-    // const callInnerFunc = outerFunc();
-    // callInnerFunc();    // 1000
 
     return (
         <div>
