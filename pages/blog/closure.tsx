@@ -4,10 +4,10 @@ const closure = () => {
 
     useEffect(() => {
         console.log(fn_counter().value()); // logs 0
-        fn_counter().increment();
-        fn_counter().increment();
+        fn_counter().increment(1);
+        fn_counter().increment(1);
         console.log(fn_counter().value()); // logs 2
-        fn_counter().decrement();
+        fn_counter().decrement(1);
         console.log(fn_counter().value()); // logs 1
     }, []);
 
@@ -35,7 +35,7 @@ const closure = () => {
             decrement: (num: number) => {
                 return changeBy(-1)
             },
-            value: (num: number) => {
+            value: () => {
                 console.log(count);
                 return count;
             }
