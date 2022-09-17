@@ -4,10 +4,10 @@ const closure = () => {
 
     useEffect(() => {
         console.log(fn_counter().value()); // logs 0
-        fn_counter().increment();
-        fn_counter().increment();
+        fn_counter().increment(1);
+        fn_counter().increment(1);
         console.log(fn_counter().value()); // logs 2
-        fn_counter().decrement();
+        fn_counter().decrement(1);
         console.log(fn_counter().value()); // logs 1
     }, []);
 
@@ -29,10 +29,10 @@ const closure = () => {
         }
 
         return {
-            increment: (): void => {
+            increment: (num: number): void => {
                 return changeBy(1);
             },
-            decrement: () => {
+            decrement: (num: number) => {
                 return changeBy(-1)
             },
             value: () => {
@@ -42,23 +42,6 @@ const closure = () => {
         }
     }
 
-    const btnControl = () => {
-
-
-        return {
-            onClick: () => {
-
-            },
-            onChange: () => {
-
-            }
-        }
-
-    }
-
-
-    // const callInnerFunc = outerFunc();
-    // callInnerFunc();    // 1000
 
     return (
         <div>

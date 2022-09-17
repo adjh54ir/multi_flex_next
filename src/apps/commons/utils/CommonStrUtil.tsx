@@ -261,7 +261,6 @@ class CommonStrUtil {
 	getCookie = (cookieName: string): string => {
 		// var value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
 		// return value ? decodeURIComponent(value[2]) : null;
-
 		let result = '';
 		// 1. 모든 쿠키를 가져와서 분리 함
 		document.cookie.split(';').map((item) => {
@@ -285,7 +284,6 @@ class CommonStrUtil {
 	setCookie = (cookieName: string, cookieValue: string, expiresHour: number): void => {
 		const expired = new Date();
 		expired.setTime(expired.getTime() + expiresHour * 24 * 60 * 60 * 1000);
-
 		document.cookie = `${cookieName}=${cookieValue}; path=/; Expires=${expired}`;
 	};
 
