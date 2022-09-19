@@ -261,7 +261,6 @@ class CommonStrUtil {
 	getCookie = (cookieName: string): string => {
 		// var value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
 		// return value ? decodeURIComponent(value[2]) : null;
-	
 		let result = '';
 		// 1. 모든 쿠키를 가져와서 분리 함
 		document.cookie.split(';').map((item) => {
@@ -285,7 +284,6 @@ class CommonStrUtil {
 	setCookie = (cookieName: string, cookieValue: string, expiresHour: number): void => {
 		const expired = new Date();
 		expired.setTime(expired.getTime() + expiresHour * 24 * 60 * 60 * 1000);
-		
 		document.cookie = `${cookieName}=${cookieValue}; path=/; Expires=${expired}`;
 	};
 
@@ -296,6 +294,86 @@ class CommonStrUtil {
 	 */
 	deleteCookie = (cookieName: string): void => {
 		document.cookie = `${cookieName}=0; max-age=0`;
+	};
+
+	controlLocalStorage = () => {
+		// 구조 분해 할당(Destructuring assignment)을 이용한 메소드 호출
+		const { setItem, getItem, removeItem, clear, length, key } = localStorage;
+
+		// 로컬 스토리지 저장1 - 키(key)와 값(value)을 기반으로 저장합니다.(값을 문자열로 저장)
+		localStorage.setItem('userId', 'adjh54');
+
+		// 로컬 스토리지 저장2 - 키(key)와 값(value)을 기반으로 저장합니다.(값을 Object로 저장)
+		const userInfoObj = {
+			userId: 'adjh54',
+			userAge: 30,
+		};
+		localStorage.setItem('userInfoObj', JSON.stringify(userInfoObj));
+
+		// 로컬 스토리지 저장3 - 키(key)와 값(value)을 기반으로 저장합니다.(값을 Array로 저장)
+		const userAddr = ['Seoul', 'Dongjak-gu'];
+		localStorage.setItem('userInfoArr', JSON.stringify(userAddr));
+
+		// 로컬 스토리지 불러오기1 - 키(key) 값을 기반으로 값(value)을 불러옵니다.(String -> String)
+		localStorage.getItem('userId');
+
+		// 로컬 스토리지 불러오기2 - 키(key) 값을 기반으로 값(value)을 불러옵니다.(String -> Object)
+		JSON.parse(localStorage.getItem('userInfoObj')!);
+
+		// 로컬 스토리지 불러오기3 - 키(key) 값을 기반으로 값(value)을 불러옵니다.(String -> Array)
+		JSON.parse(localStorage.getItem('userInfoObj')!);
+
+		// 로컬 스토리지 불러오기 - 인덱스 값을 기반으로 값(value)을 불러옵니다.
+		localStorage.key(0);
+
+		// 로컬 스토리지 삭제 - 키(key) 값을 기반으로 해당 로컬 스토리지를 제거합니다.
+		localStorage.removeItem('userId');
+
+		// 로컬 스토리지 초기화
+		localStorage.clear();
+
+		// 로컬 스토리지의 개수를 반환 받는다.
+		localStorage.length;
+	};
+
+	controlSessionStroage = () => {
+		// 구조 분해 할당(Destructuring assignment)을 이용한 메소드 호출
+		const { setItem, getItem, removeItem, clear, length, key } = sessionStorage;
+
+		// 세션 스토리지 저장1 - 키(key)와 값(value)을 기반으로 저장합니다.(값을 문자열로 저장)
+		sessionStorage.setItem('userId', 'adjh54');
+
+		// 세션 스토리지 저장2 - 키(key)와 값(value)을 기반으로 저장합니다.(값을 Object로 저장)
+		const userInfoObj = {
+			userId: 'adjh54',
+			userAge: 30,
+		};
+		sessionStorage.setItem('userInfoObj', JSON.stringify(userInfoObj));
+
+		// 세션 스토리지 저장3 - 키(key)와 값(value)을 기반으로 저장합니다.(값을 Array로 저장)
+		const userAddr = ['Seoul', 'Dongjak-gu'];
+		sessionStorage.setItem('userInfoArr', JSON.stringify(userAddr));
+
+		// 세션 스토리지 불러오기1 - 키(key) 값을 기반으로 값(value)을 불러옵니다.(String -> String)
+		sessionStorage.getItem('userId');
+
+		// 세션 스토리지 불러오기2 - 키(key) 값을 기반으로 값(value)을 불러옵니다.(String -> Object)
+		JSON.parse(sessionStorage.getItem('userInfoObj')!);
+
+		// 세션 스토리지 불러오기3 - 키(key) 값을 기반으로 값(value)을 불러옵니다.(String -> Array)
+		JSON.parse(sessionStorage.getItem('userInfoObj')!);
+
+		// 세션 스토리지 불러오기 - 인덱스 값을 기반으로 값(value)을 불러옵니다.
+		sessionStorage.key(0);
+
+		// 세션 스토리지 삭제 - 키(key) 값을 기반으로 해당 로컬 스토리지를 제거합니다.
+		sessionStorage.removeItem('userId');
+
+		// 세션 스토리지 초기화
+		sessionStorage.clear();
+
+		// 세션 스토리지의 개수를 반환 받는다.
+		sessionStorage.length;
 	};
 }
 
