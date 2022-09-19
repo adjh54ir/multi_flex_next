@@ -11,6 +11,3 @@ export const enum MOMENT_FORMAT_TYPE {
     krSemi = "YYYY년 MM월 DD일",      // 한글로 구성된 년도 달 일자
     full = 'YYYY-MM-DD kk:mm:ss',   // 년도-달-일자 시간-분-초 출력
 };
-
-
-
