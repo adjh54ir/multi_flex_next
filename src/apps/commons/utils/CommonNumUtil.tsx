@@ -13,7 +13,7 @@ class CommonNumUtil {
 	 * @param max
 	 * @returns
 	 */
-	between = (value: number, min: number, max: number): boolean => {
+	betweenNum = (value: number, min: number, max: number): boolean => {
 		let isSuccess = false;
 		if (Number.isInteger(value) && value >= min && value <= max) {
 			isSuccess = true;
@@ -36,7 +36,7 @@ class CommonNumUtil {
 	 * @param {number} maxRange
 	 * @returns {number[]} 생성한 배열 리턴
 	 */
-	makeRangeArr = (maxRange: number): number[] => {
+	makeRangeNumArr = (maxRange: number): number[] => {
 		return Array.from(Array(maxRange + 1).keys()).slice(1);
 	};
 
