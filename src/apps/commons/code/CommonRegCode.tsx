@@ -5,6 +5,29 @@
  */
 
 /**
+ * [정규식 모음 - 0] '패턴'을 이용한 정규식
+ */
+
+// 1. 문자만에 대한 정규식(공백X) - 정규 문법 이용
+export const REGXP_PATTERN_CHAR = /^[\w]*$/;
+
+// 2. 문자만에 대한 정규식(공백X) - 정규 문법 이용
+export const REGXP_PATTERN_NO_CHAR = /^[\W]*$/;
+
+// 3. space, tabe, newline으로만 이루어진 문자열에 대해서 허용(공백만 O) - 정규 문법 이용
+export const REGXP_SPACE_CHAR = /^[\w]*$/;
+
+// 4. 문자열(string)내에 space, tabe, newline 포함하는지 확인 - 정규 문법 이용
+export const REGXP_SPACE_NO_CHAR = /^[\W]*$/;
+
+// 5. 숫자만 이용하는 정규식 - 패턴 이용
+export const REGEXP_PATTERN_NUMBER = /^[\d]*$/;
+
+// 6. 숫자가 아닌것에 대한 정규식 - 패턴 이용
+export const REGEXP_PATTERN_NO_NUMBER = /^[\D]*$/;
+
+
+/**
  * [정규식 모음-1] '문자열'에 대한 정규식
  */
 // 영문만 입력에 대한 정규식
@@ -80,9 +103,13 @@ export const REGEXP_DATE_TYPE3 = /^\d{4}\.(0[1-9]|1[012])\.(0[1-9]|[12][0-9]|3[0
 // [Hard] 날짜에 대한 정규식 => 19xx 20xx년도에 대해서 추가함 -- 강력하게 유효성 검증
 export const REGEXP_DATE_TYPE4 = /^(19|20)\d{2}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/;
 
+// 날짜에 대한 정규식 - YYYY/MM/DD hh:mi:ss
+export const REGEXP_DATE_TYPE5 = /([0-2][0-9]{3})\/([0-1][0-9])\/([0-3][0-9]) ([0-5][0-9]):([0-5][0-9]):([0-5][0-9])(([\-\+]([0-1][0-9])\:00))?/;
 /**
  * [정규식 모음-4] 시간에 대한 정규식
  * @description: 날짜에 대한 정규식
  */
 // 시간에 대한 타입1에 대한 정규식 => ex) 13:47(HH24:mm)
 export const REGXP_TIME_TYPE1 = /^([1-9]|[01][0-9]|2[0-3]):([0-5][0-9])$/;
+
+
