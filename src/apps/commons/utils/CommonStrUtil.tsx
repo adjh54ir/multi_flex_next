@@ -2,7 +2,7 @@
 import moment from 'moment';
 import { v4 as uuidv4 } from 'uuid';
 import { MOMENT_FORMAT_TYPE } from '../code/CommonCode';
-import { REGXP_DATE_TYPE1 } from '../code/CommonRegCode';
+import { REGEXP_DATE_TYPE1 } from '../code/CommonRegCode';
 import CommonNumUtil from './CommonNumUtil';
 /**
  * 공통 유틸 구성
@@ -155,7 +155,7 @@ class CommonStrUtil {
 		let answer = '';
 		const WEEKEEND = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 
-		if (CommonNumUtil.between(year, 0, 2040)) {
+		if (CommonNumUtil.betweenNum(year, 0, 2040)) {
 			const monthNum = day.toString().substring(0, 2);
 			const dayNum = day.toString().substring(2, 4);
 			const searchDay = new Date(`${year}-${monthNum}-${dayNum}`).getDay();
@@ -181,7 +181,7 @@ class CommonStrUtil {
 
 		if (typeof startDate === 'string') {
 			// Format 검증(YYYY-MM-DD)
-			if (REGXP_DATE_TYPE1.test(startDate)) {
+			if (REGEXP_DATE_TYPE1.test(startDate)) {
 				// format이 맞이면 Date 타입으로 변환
 				compare_start_date = new Date(startDate);
 			} else {
@@ -190,7 +190,7 @@ class CommonStrUtil {
 			}
 		}
 		if (typeof endDate === 'string') {
-			if (REGXP_DATE_TYPE1.test(endDate)) {
+			if (REGEXP_DATE_TYPE1.test(endDate)) {
 				compare_end_date = new Date(endDate);
 			} else {
 				console.log('파라미터 첫번째 값이 유효성 YYYY-MM-DD 형태가 아닙니다.');
