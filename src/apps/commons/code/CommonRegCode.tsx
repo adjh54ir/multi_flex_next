@@ -26,18 +26,17 @@ export const REGEXP_PATTERN_NUMBER = /^[\d]*$/;
 // 6. 숫자가 아닌것에 대한 정규식 - 패턴 이용
 export const REGEXP_PATTERN_NO_NUMBER = /^[\D]*$/;
 
-
 /**
  * [정규식 모음-1] '문자열'에 대한 정규식
  */
 // 영문만 입력에 대한 정규식
-export const REGEXP_EN = /[a-zA-Z]/g;
+export const REGEXP_EN = /^[a-z|A-Z]*$/;
 
 // 한글만 입력에 대한 정규식
-export const REGEXP_KR = /[ㄱ-ㅎ가-힣]/g;
+export const REGEXP_KR = /^[ㄱ-ㅎ|가-힣]*$/;
 
 // 영문 && 한글만 입력에 대한 정규식
-export const REGEXP_CHAR = /[a-zA-Zㄱ-ㅎ가-힣]/g;
+export const REGEXP_CHAR = /^[a-z|A-Z|ㄱ-ㅎ|가-힣]*$/;
 
 // 영문 && 한글 && 숫자만 입력에 대한 정규식
 export const REGEXP_CHAR_NUM = /[0-9a-zA-Zㄱ-ㅎ가-힣]/g;
@@ -104,12 +103,11 @@ export const REGEXP_DATE_TYPE3 = /^\d{4}\.(0[1-9]|1[012])\.(0[1-9]|[12][0-9]|3[0
 export const REGEXP_DATE_TYPE4 = /^(19|20)\d{2}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/;
 
 // 날짜에 대한 정규식 - YYYY/MM/DD hh:mi:ss
-export const REGEXP_DATE_TYPE5 = /([0-2][0-9]{3})\/([0-1][0-9])\/([0-3][0-9]) ([0-5][0-9]):([0-5][0-9]):([0-5][0-9])(([\-\+]([0-1][0-9])\:00))?/;
+export const REGEXP_DATE_TYPE5 =
+	/([0-2][0-9]{3})\/([0-1][0-9])\/([0-3][0-9]) ([0-5][0-9]):([0-5][0-9]):([0-5][0-9])(([\-\+]([0-1][0-9])\:00))?/;
 /**
  * [정규식 모음-4] 시간에 대한 정규식
  * @description: 날짜에 대한 정규식
  */
 // 시간에 대한 타입1에 대한 정규식 => ex) 13:47(HH24:mm)
 export const REGXP_TIME_TYPE1 = /^([1-9]|[01][0-9]|2[0-3]):([0-5][0-9])$/;
-
-

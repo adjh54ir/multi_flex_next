@@ -7,6 +7,29 @@
  */
 class CommonNumUtil {
 	/**
+	 * [공통함수] 숫자 여부를 체크 - 강력한 체크
+	 * @param value
+	 * @returns
+	 */
+	isNumber = (value: number): boolean => {
+		let result = false;
+		const regExp = /[\d]*$/;
+		let charCnt = 0;
+
+		// 1. 숫자여부를 체크
+		if (Number.isInteger(value)) {
+			// 2. "1e23"에 대한 예외처리
+			// prettier-ignore
+			value.toString().split("").map((valItem)=>{
+				if(regExp.test(valItem)) charCnt += 1;
+			});
+			charCnt === 0 ? (result = true) : (result = false);
+		}
+
+		return result;
+	};
+
+	/**
 	 * [공통함수] 숫자 및 숫자 범위에 대한 진위를 판단해주는 함수입니다.
 	 * @param value
 	 * @param min
@@ -62,10 +85,7 @@ class CommonNumUtil {
 		if (minNum < maxNum && Number.isInteger(minNum) && Number.isInteger(maxNum)) {
 			resultNum = Math.floor(Math.random() * maxNum + 1) + minNum;
 		}
-		return resultNum
-
-
-
+		return resultNum;
 	};
 }
 export default new CommonNumUtil();

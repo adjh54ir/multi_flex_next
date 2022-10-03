@@ -82,7 +82,7 @@ const Header = () => {
 							</li>
 
 							<li>
-								<Link href={`/blog/closure`}>
+								<Link href={`/blog/closure3Modlues`}>
 									<a href='#' className={headerContent}>
 										블로그 주제
 									</a>

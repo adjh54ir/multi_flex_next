@@ -1,23 +1,28 @@
 import { useEffect } from 'react';
 
-const closure = () => {
+/**
+ * 클로저를 이용한 Private Method 구현하기
+ * @returns
+ */
+const closure1PrivateMethod = () => {
 	useEffect(() => {
-		console.log(counter.value()); // logs 0
-		counter.increment();
-		counter.increment();
-		console.log(counter.value()); // logs 2
-		counter.decrement();
-		console.log(counter.value()); // logs 1
+		const closureCounter = counter();
+		console.log(closureCounter.value()); // logs 0
+		closureCounter.increment();
+		closureCounter.increment();
+		console.log(closureCounter.value()); // logs 2
+		closureCounter.decrement();
+		console.log(closureCounter.value()); // logs 1
 	}, []);
 
 	/**
-	 * 숫자를 늘리고 줄이는 함수 
+	 * 숫자를 늘리고 줄이는 함수
 	 */
-	const counter = (function () {
+	const counter = () => {
 		// 외부의 함수의 변수를 선언합니다.
 		let count = 0;
 
-		// 전달 받은 값을 
+		// 전달 받은 값을
 		const changeBy = (value: number) => {
 			count += value;
 		};
@@ -39,15 +44,8 @@ const closure = () => {
 				return count;
 			},
 		};
-	})();
-
-
-	const containState = () => {
-
-
-
 	};
 
 	return <div></div>;
 };
-export default closure;
+export default closure1PrivateMethod;
