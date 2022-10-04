@@ -15,6 +15,12 @@ const main = () => {
 		//
 	}, []);
 
+	const prettierIgnore = () => {
+		const str = 'hello';
+		// prettier-ignore
+		const chgStr = str.toLowerCase().split('').map((sItem) => {if (sItem.length >= 10) console.log('10자리 이하입니다.');});
+	};
+
 	/**
 	 * 클로저를 이용한 계산기 모듈
 	 */
