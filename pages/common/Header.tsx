@@ -87,6 +87,13 @@ const Header = () => {
 									</a>
 								</Link>
 							</li>
+							<li>
+								<Link href={`/bloodType/main`}>
+									<a href='#' className={headerContent}>
+										부모와 자식의 혈액형
+									</a>
+								</Link>
+							</li>
 
 							<li>
 								<Link href={`/blog/EventCapturing`}>
