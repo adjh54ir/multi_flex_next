@@ -8,7 +8,7 @@ import { MOMENT_FORMAT_TYPE } from '../code/CommonCode';
  * @foramt A to B : A에서 B로 전환하는 함수 -> return B
  * 
  */
-class ConvertUtil {
+class CommonConvertUtil {
 
     /**
      * [공통함수] Date를 formating 된 String으로 반환해주는 함수 
@@ -75,4 +75,4 @@ class ConvertUtil {
     }
 
 }
-export default new ConvertUtil();
+export default new CommonConvertUtil();
