@@ -55,6 +55,7 @@ module.exports = {
 		 *@description typescript option
 		 */
 		'@typescript-eslint/no-unused-expressions': 'off',
+		'react/no-unknown-property': 'off',
 
 		// TODO: 삭제 예정
 		'no-unused-vars': 'off',
