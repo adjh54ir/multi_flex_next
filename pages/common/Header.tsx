@@ -54,7 +54,7 @@ const Header = () => {
 										href='#'
 										className='block py-2 pr-4 pl-3 text-white rounded bg-blue-700 lg:bg-transparent lg:text-blue-700 lg:p-0 dark:text-white'
 										aria-current='page'>
-										Home
+										홈
 									</a>
 								</Link>
 							</li>
@@ -62,6 +62,13 @@ const Header = () => {
 								<Link href='/lotto/main'>
 									<a href='#' className={headerContent}>
 										로또
+									</a>
+								</Link>
+							</li>
+							<li>
+								<Link href={`/bloodType/main`}>
+									<a href='#' className={headerContent}>
+										혈액형
 									</a>
 								</Link>
 							</li>
@@ -87,13 +94,7 @@ const Header = () => {
 									</a>
 								</Link>
 							</li>
-							<li>
-								<Link href={`/bloodType/main`}>
-									<a href='#' className={headerContent}>
-										부모와 자식의 혈액형
-									</a>
-								</Link>
-							</li>
+
 
 							<li>
 								<Link href={`/blog/EventCapturing`}>

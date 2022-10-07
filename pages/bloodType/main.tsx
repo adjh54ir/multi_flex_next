@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-enum bloodType {
+enum BloodTypeEnum {
 	'AType' = 'A',
 	'BType' = 'B',
 	'OType' = 'O',
@@ -11,7 +11,7 @@ const main = () => {
 	const mBloodType = useRef<HTMLSelectElement>(null); // 아빠의 혈액형
 	const fBloodType = useRef<HTMLSelectElement>(null); // 엄마의 혈액형
 
-	const [cBloodType, setCBloodType] = useState<string[]>();
+	const [cBloodType, setCBloodType] = useState<string>();
 
 	useEffect(() => {
 		//
@@ -24,10 +24,9 @@ const main = () => {
 		if (mBloodType.current && fBloodType.current) {
 			const fBloodTypeVal = fBloodType.current.value;
 			const mBloodTypeVal = mBloodType.current.value;
-			console.log(fBloodTypeVal, mBloodTypeVal);
 
 			const cBloodTypeArr = [];
-			const { AType, BType, OType, ABType } = bloodType;
+			const { AType, BType, OType, ABType } = BloodTypeEnum;
 
 			// A형 일 경우
 			if (fBloodTypeVal === AType) {
@@ -43,7 +42,6 @@ const main = () => {
 				if (mBloodTypeVal === OType) cBloodTypeArr.push(BType, OType);
 				if (mBloodTypeVal === ABType) cBloodTypeArr.push(AType, BType, ABType);
 			}
-
 			// O형 일 경우
 			if (fBloodTypeVal === OType) {
 				if (mBloodTypeVal === AType) cBloodTypeArr.push(AType, OType);
@@ -59,7 +57,7 @@ const main = () => {
 				if (mBloodTypeVal === ABType) cBloodTypeArr.push(AType, BType, ABType);
 			}
 
-			if (cBloodTypeArr.length > 0) setCBloodType(cBloodTypeArr);
+			if (cBloodTypeArr.length > 0) setCBloodType(cBloodTypeArr.join(", "));
 		}
 	};
 
@@ -70,21 +68,44 @@ const main = () => {
 		const { current: fCurr } = fBloodType;
 		const { current: mCurr } = mBloodType;
 
-		const cBloodTypeArr: String[] = [];
-		const { AType, BType, OType, ABType } = bloodType;
+		let cBloodTypeArr = [];
+		const { AType, BType, OType, ABType } = BloodTypeEnum;
 
+		// 1. 선택된 값이 있는지 없는 여부 체크 
 		if (fCurr && mCurr) {
 			const { value: fBloodTypeVal } = fCurr; // 아빠 혈액형 SELECT 값
 			const { value: mBloodTypeVal } = mCurr; // 엄마 혈액형 SELECT 값
 			const familyArr = [fBloodTypeVal, mBloodTypeVal]; // 엄마 아빠 혈액형 Array
-
-			// if (familyArr.includes(AType)) {
-			// 	// 중복 인 경우
-			// 	if (funcBloodDuplicate(familyArr)) cBloodTypeArr.push(AType, OType);
-			//     if()
-			// }
-
-			console.log(cBloodTypeArr);
+			// [CASE1] 혈액형이 둘 다 동일 한 경우 
+			if (funcBloodDuplicate(familyArr)) {
+				if (familyArr.includes(AType)) cBloodTypeArr.push(AType, OType);	// A, A 인 경우 
+				if (familyArr.includes(BType)) cBloodTypeArr.push(BType, OType);	// B, B 인 경우 
+				if (familyArr.includes(OType)) cBloodTypeArr.push(BType, OType);	// O, O 인 경우 
+				if (familyArr.includes(ABType)) cBloodTypeArr.push(ABType, BType, ABType);	// AB, AB 인 경우
+			}
+			// [CASE2] 혈액형이 서로 다른 경우 
+			else {
+				// A 기본
+				if (familyArr.includes(AType)) {
+					if (familyArr.includes(BType)) cBloodTypeArr.push(AType, BType, OType, ABType);	// A, B
+					if (familyArr.includes(OType)) cBloodTypeArr.push(AType, OType);	// A, O
+					if (familyArr.includes(ABType)) cBloodTypeArr.push(AType, BType, ABType);	// A, AB
+				}
+				// B 기본
+				else if (familyArr.includes(BType)) {
+					if (familyArr.includes(OType)) cBloodTypeArr.push(BType, OType);	// B, O
+					if (familyArr.includes(ABType)) cBloodTypeArr.push(AType, BType, ABType);	// B, AB
+				}
+				// O 기본
+				else if (familyArr.includes(OType)) if (familyArr.includes(ABType)) cBloodTypeArr.push(AType, BType);	// O, AB
+			}
+		}
+		if (cBloodTypeArr.length > 0) {
+			const addCharArr: string[] = [];
+			cBloodTypeArr.map((cItem) => {
+				addCharArr.push(cItem.concat("형"));
+			})
+			setCBloodType(addCharArr.join(", "));
 		}
 	};
 
@@ -102,13 +123,13 @@ const main = () => {
 	return (
 		<div>
 			<div className='mb-10'>
-				<h1>자식 혈액형 구하기 </h1>
+				<h2>자식 혈액형 구하기 </h2>
 			</div>
 			<div className='mb-10'>
 				<label htmlFor='fBloodType'>
 					아빠의 혈액형
-					<select id='fBloodType' className='ml-10' ref={fBloodType}>
-						<option value='A'>A형</option>
+					<select id='fBloodType' className='ml-10 w-5/12 h-8 text-sm' ref={fBloodType} defaultValue="A">
+						<option value='A' >A형</option>
 						<option value='B'>B형</option>
 						<option value='O'>O형</option>
 						<option value='AB'>AB형</option>
@@ -118,7 +139,7 @@ const main = () => {
 			<div className='mb-10'>
 				<label htmlFor='mBloodType'>
 					엄마의 혈액형
-					<select id='mBloodType' className='ml-10' ref={mBloodType}>
+					<select id='mBloodType' className='ml-10 w-5/12 h-8 text-sm' ref={mBloodType} defaultValue="A">
 						<option value='A'>A형</option>
 						<option value='B'>B형</option>
 						<option value='O'>O형</option>
@@ -126,17 +147,16 @@ const main = () => {
 					</select>
 				</label>
 			</div>
-			<div className='mb-10'>
-				<button type='button' onClick={refactor_funcGenerateType}>
+			<div className='mb-10 bg-center '>
+				<button type='button' className='bg-blue-500 border rounded w-2/12' onClick={refactor_funcGenerateType}>
 					혈액형은?
 				</button>
 			</div>
-
 			<div>
-				<label htmlFor='mBloodType'>
+				<label htmlFor='cBloodType'>
 					자식의 혈액형
-					<input type='text' id='mBloodType' value={cBloodType} />
 				</label>
+				<input type='text' id='cBloodType' className='ml-10 w-5/12' defaultValue={cBloodType} disabled={true} />
 			</div>
 		</div>
 	);
