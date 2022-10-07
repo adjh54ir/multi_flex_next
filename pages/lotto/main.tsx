@@ -20,25 +20,36 @@ const main = () => {
 	 * 6개 중 2개 나 1개 맞으면 6등 - 미 당첨
 	 */
 	const funcGenerateLotto = () => {
-		let oneLottoArr: number[] = [];
-		const resultTotalArr: number[][] = [];
+		const resultTotalArr: number[][] = []; 	// 여러개의 로또가 들어 있는 배열 [총합]
+		let oneLottoArr: number[] = [];	// 한개의 로또가 들어가 있는 배열
+
+		// 1-1. 로또 게임수를 선택하지 않은 경우 
 		if (lottoGameCnt === 0) alert("로또 게임 수를 선택해주세요");
+
+		// 1-2. 로또 게임수를 선택 한 경우 -> 프로세스 시작
 		else {
-			// 	1게임의 경우 처리 방식
+			// 2. while문을 반복하면서 로또 번호를 생성한다.
 			while (true) {
-				const _random_1_to_45: number = Math.floor(Math.random() * 45) + 1; // 로또의 번호 범위(1 ~ 45);
-				// 7개의 숫자를 중복을 제외한 숫자로 구성
+
+				// 3. 1 ~ 45 범위의 랜덤한 숫자를 추출한다.
+				const _random_1_to_45: number = Math.floor(Math.random() * 45) + 1;
+
+				// 4. 7개의 숫자를 중복을 제외한 숫자로 구성
 				if (!oneLottoArr.includes(_random_1_to_45)) oneLottoArr.push(_random_1_to_45);
-				// [탈출] 7자리가 완성되면 종료
+
+				// 5. [탈출] 7자리가 완성되면 종료
 				if (oneLottoArr.length === 7) {
+
+					// 6. 생성한 번호의 값을 배열에 넣는다.
 					resultTotalArr.push(oneLottoArr);
-					// 선택한 게임 횟수만큼 배열의 수가 맞지 않으면 배열을 추가함.
+
+					// 7. 배열이 충족될
 					if (resultTotalArr.length !== lottoGameCnt) oneLottoArr = []; // 초기화 하여서 재 번호 생성
 					else break;
 				}
 			}
 		}
-		// 숫자 정렬
+		// 8. 생성한 배열을 정렬하고 마무리.
 		const _resultArr = resultTotalArr.filter((item) => item.sort((a, b) => a - b));
 		setLottoGameResult(_resultArr);
 	};
@@ -48,8 +59,11 @@ const main = () => {
 	 * @param e 
 	 */
 	const funcLottoCopy = async (e: MouseEvent) => {
+		// 1. 자식 노드가 존재 할 경우 접근을 한다.
 		if (e.currentTarget.previousElementSibling) {
+			// 1.1. 자식 노드의 'value' 속성 값을 가져온다.
 			const siblingVal = e.currentTarget.previousElementSibling.getAttribute("value");
+			// 1.2. 클립보드에 가져온 값을 복사한다.
 			if (siblingVal) await navigator.clipboard.writeText(siblingVal)
 			alert("클립보드에 복사 되었습니다. 붙여넣기를 해주세요")
 		}
