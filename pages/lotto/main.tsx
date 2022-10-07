@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { MouseEvent, useEffect, useState } from 'react';
 
 const main = () => {
-	const [lottoGameCnt, setLottoGameCnt] = useState<number>(1); // 로도 게임 횟수
+	const [lottoGameCnt, setLottoGameCnt] = useState<number>(0); // 로도 게임 횟수
 	const [lottoGameResult, setLottoGameResult] = useState<number[][]>([]);
 
 	useEffect(() => {
@@ -19,38 +19,40 @@ const main = () => {
 	 * 6개 중 3개 맞으면 5등
 	 * 6개 중 2개 나 1개 맞으면 6등 - 미 당첨
 	 */
-	const fn_generateLotto = () => {
-		let _oneLottoArr: number[] = [];
-		const _resultTotalArr: number[][] = [];
-
-		// 	1게임의 경우 처리 방식
-		while (true) {
-			const _random_1_to_45: number = Math.floor(Math.random() * 45) + 1; // 로또의 번호 범위(1 ~ 45);
-
-			// 7개의 숫자를 중복을 제외한 숫자로 구성
-			if (!_oneLottoArr.includes(_random_1_to_45)) _oneLottoArr.push(_random_1_to_45);
-
-			// 7자리가 완성되면 종료
-			if (_oneLottoArr.length === 7) {
-				_resultTotalArr.push(_oneLottoArr);
-				// 선택한 게임 횟수만큼 배열의 수가 맞지 않으면 배열을 추가함.
-				if (_resultTotalArr.length !== lottoGameCnt) {
-					_oneLottoArr = []; // 초기화 하여서 재 번호 생성
-				} else {
-					break;
+	const funcGenerateLotto = () => {
+		let oneLottoArr: number[] = [];
+		const resultTotalArr: number[][] = [];
+		if (lottoGameCnt === 0) alert("로또 게임 수를 선택해주세요");
+		else {
+			// 	1게임의 경우 처리 방식
+			while (true) {
+				const _random_1_to_45: number = Math.floor(Math.random() * 45) + 1; // 로또의 번호 범위(1 ~ 45);
+				// 7개의 숫자를 중복을 제외한 숫자로 구성
+				if (!oneLottoArr.includes(_random_1_to_45)) oneLottoArr.push(_random_1_to_45);
+				// [탈출] 7자리가 완성되면 종료
+				if (oneLottoArr.length === 7) {
+					resultTotalArr.push(oneLottoArr);
+					// 선택한 게임 횟수만큼 배열의 수가 맞지 않으면 배열을 추가함.
+					if (resultTotalArr.length !== lottoGameCnt) oneLottoArr = []; // 초기화 하여서 재 번호 생성
+					else break;
 				}
 			}
 		}
-		const _resultArr = _resultTotalArr.filter((item) => item.sort((a, b) => a - b));
+		// 숫자 정렬
+		const _resultArr = resultTotalArr.filter((item) => item.sort((a, b) => a - b));
 		setLottoGameResult(_resultArr);
-		console.log(_resultArr);
-		console.log(_resultArr);
 	};
 
-	const fn_lottoCopy = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-		// 로또 번호
-		const lotto_num = e.currentTarget.previousSibling?.nodeValue;
-		console.log(lotto_num);
+	/**
+	 * [함수] 로또 번호 클립보드 복사하기 기능
+	 * @param e 
+	 */
+	const funcLottoCopy = async (e: MouseEvent) => {
+		if (e.currentTarget.previousElementSibling) {
+			const siblingVal = e.currentTarget.previousElementSibling.getAttribute("value");
+			if (siblingVal) await navigator.clipboard.writeText(siblingVal)
+			alert("클립보드에 복사 되었습니다. 붙여넣기를 해주세요")
+		}
 	};
 
 	// ================================================================================================================================================================
@@ -71,8 +73,9 @@ const main = () => {
 						<select
 							id='gameCnt'
 							className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-11/12 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-							onChange={(e) => setLottoGameCnt(parseInt(e.target.value))}>
-							<option selected>게임을 선택하시오</option>
+							onChange={(e) => setLottoGameCnt(parseInt(e.target.value))}
+							defaultValue={lottoGameCnt}>
+							<option value={0}>게임을 선택하시오</option>
 							<option value={1}>1 게임</option>
 							<option value={3}>3 게임</option>
 							<option value={5}>5 게임</option>
@@ -83,7 +86,7 @@ const main = () => {
 						<button
 							type='button'
 							className='text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800'
-							onClick={fn_generateLotto}>
+							onClick={funcGenerateLotto}>
 							게임 생성
 						</button>
 						<button
@@ -126,7 +129,7 @@ const main = () => {
 										<button
 											type='button'
 											className='text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
-											onClick={(e) => fn_lottoCopy(e)}>
+											onClick={(e) => funcLottoCopy(e)}>
 											복사하기{' '}
 										</button>
 									</div>

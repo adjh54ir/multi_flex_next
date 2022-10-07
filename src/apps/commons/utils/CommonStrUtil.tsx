@@ -30,6 +30,14 @@ class CommonStrUtil {
 			return false;
 		}
 	};
+	/**
+	 * [공통함수] 클립보드에 복사해주는 기능 
+	 * @param text 
+	 */
+	copyCliboard = async (text: string): Promise<void> => {
+		await navigator.clipboard.writeText(text);
+		alert("클립보드에 복사가 되었습니다. 붙여넣기를 해 주세요");
+	}
 
 	/**
 	 * UUID 난수 생성 함수
@@ -80,6 +88,9 @@ class CommonStrUtil {
 		const _resultUserAgent = window.navigator.userAgent;
 		return _resultUserAgent;
 	};
+
+
+
 
 	/**
 	 * 파일 다운로드 기능 (Vanilla JS)
