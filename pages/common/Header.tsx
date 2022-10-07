@@ -80,6 +80,13 @@ const Header = () => {
 									</a>
 								</Link>
 							</li>
+							<li>
+								<Link href='/calculator/main'>
+									<a href='#' className={headerContent}>
+										계산기
+									</a>
+								</Link>
+							</li>
 
 							<li>
 								<Link href={`/blog/closure3Modlues`}>
