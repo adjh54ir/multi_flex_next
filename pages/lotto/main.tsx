@@ -5,8 +5,8 @@ const main = () => {
 	const [lottoGameResult, setLottoGameResult] = useState<number[][]>([]);
 
 	useEffect(() => {
-		// fn_initSetting();
-	}, []);
+		//
+	});
 
 	/**
 	 * [함수] 로또 번호 생성기

@@ -8,10 +8,10 @@
 class CommonNumUtil {
 	/**
 	 * [공통함수] 숫자 여부를 체크 - 강력한 체크
-	 * @param value
-	 * @returns
+	 * @param {any} value
+	 * @returns {boolean}
 	 */
-	isNumber = (value: number): boolean => {
+	isNumber = (value: any): boolean => {
 		let result = false;
 		const regExp = /[\d]*$/;
 		let charCnt = 0;
@@ -20,13 +20,23 @@ class CommonNumUtil {
 		if (Number.isInteger(value)) {
 			// 2. "1e23"에 대한 예외처리
 			// prettier-ignore
-			value.toString().split("").map((valItem)=>{
+			value.toString().split("").map((valItem: string)=>{
 				if(regExp.test(valItem)) charCnt += 1;
 			});
 			charCnt === 0 ? (result = true) : (result = false);
 		}
 
 		return result;
+	};
+
+	/**
+	 * [공통함수] 숫자 여부를 체크2
+	 * @param {any} value
+	 * @returns {boolean}
+	 * @refernce https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
+	 */
+	isNumber2 = (value: number): boolean => {
+		return value !== undefined && typeof value === 'number' && !isNaN(value);
 	};
 
 	/**
