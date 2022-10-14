@@ -19,8 +19,8 @@ const EventCapturing = () => {
      */
     return (
         <div>
-            <div style={{ backgroundColor: "red", width: 250 }} onClick={onClickParent} >상위 요소
-                <div style={{ backgroundColor: "blue", width: 250 }} onClick={onClickChild}>하위 요소
+            <div style={{ backgroundColor: "red", width: 250 }} onClickCapture={onClickParent} >상위 요소
+                <div style={{ backgroundColor: "blue", width: 250 }} onClickCapture={onClickChild}>하위 요소
                     <div style={{ backgroundColor: "yellow", width: 250 }} onClickCapture={onClickLowestChild}>최하위 요소</div>
                 </div>
             </div>

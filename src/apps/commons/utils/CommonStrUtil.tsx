@@ -30,6 +30,18 @@ class CommonStrUtil {
 			return false;
 		}
 	};
+
+	/**
+	 * [공통함수] 배열의 중복된 문자열/숫자 찾아주는 함수 
+	 * @param paramArr 
+	 * @returns {boolean} 중복 여부를 boolean으로 반환해준다.
+	 */
+	isDuplicateArr = (paramArr: any[]): boolean => {
+		let isDuplicate = false;
+		if (Array.from(new Set(paramArr)).length === paramArr.length) isDuplicate = true;
+		return isDuplicate
+	}
+
 	/**
 	 * [공통함수] 클립보드에 복사해주는 기능 
 	 * @param text 

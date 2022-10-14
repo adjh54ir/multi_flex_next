@@ -57,7 +57,7 @@ const main = () => {
 				if (mBloodTypeVal === ABType) cBloodTypeArr.push(AType, BType, ABType);
 			}
 
-			if (cBloodTypeArr.length > 0) setCBloodType(cBloodTypeArr.join(", "));
+			if (cBloodTypeArr.length > 0) setCBloodType(cBloodTypeArr.join(', '));
 		}
 	};
 
@@ -71,41 +71,41 @@ const main = () => {
 		let cBloodTypeArr = [];
 		const { AType, BType, OType, ABType } = BloodTypeEnum;
 
-		// 1. 선택된 값이 있는지 없는 여부 체크 
+		// 1. 선택된 값이 있는지 없는 여부 체크
 		if (fCurr && mCurr) {
 			const { value: fBloodTypeVal } = fCurr; // 아빠 혈액형 SELECT 값
 			const { value: mBloodTypeVal } = mCurr; // 엄마 혈액형 SELECT 값
 			const familyArr = [fBloodTypeVal, mBloodTypeVal]; // 엄마 아빠 혈액형 Array
-			// [CASE1] 혈액형이 둘 다 동일 한 경우 
+			// [CASE1] 혈액형이 둘 다 동일 한 경우
 			if (funcBloodDuplicate(familyArr)) {
-				if (familyArr.includes(AType)) cBloodTypeArr.push(AType, OType);	// A, A 인 경우 
-				if (familyArr.includes(BType)) cBloodTypeArr.push(BType, OType);	// B, B 인 경우 
-				if (familyArr.includes(OType)) cBloodTypeArr.push(BType, OType);	// O, O 인 경우 
-				if (familyArr.includes(ABType)) cBloodTypeArr.push(ABType, BType, ABType);	// AB, AB 인 경우
+				if (familyArr.includes(AType)) cBloodTypeArr.push(AType, OType); // A, A 인 경우
+				if (familyArr.includes(BType)) cBloodTypeArr.push(BType, OType); // B, B 인 경우
+				if (familyArr.includes(OType)) cBloodTypeArr.push(BType, OType); // O, O 인 경우
+				if (familyArr.includes(ABType)) cBloodTypeArr.push(ABType, BType, ABType); // AB, AB 인 경우
 			}
-			// [CASE2] 혈액형이 서로 다른 경우 
+			// [CASE2] 혈액형이 서로 다른 경우
 			else {
 				// A 기본
 				if (familyArr.includes(AType)) {
-					if (familyArr.includes(BType)) cBloodTypeArr.push(AType, BType, OType, ABType);	// A, B
-					if (familyArr.includes(OType)) cBloodTypeArr.push(AType, OType);	// A, O
-					if (familyArr.includes(ABType)) cBloodTypeArr.push(AType, BType, ABType);	// A, AB
+					if (familyArr.includes(BType)) cBloodTypeArr.push(AType, BType, OType, ABType); // A, B
+					if (familyArr.includes(OType)) cBloodTypeArr.push(AType, OType); // A, O
+					if (familyArr.includes(ABType)) cBloodTypeArr.push(AType, BType, ABType); // A, AB
 				}
 				// B 기본
 				else if (familyArr.includes(BType)) {
-					if (familyArr.includes(OType)) cBloodTypeArr.push(BType, OType);	// B, O
-					if (familyArr.includes(ABType)) cBloodTypeArr.push(AType, BType, ABType);	// B, AB
+					if (familyArr.includes(OType)) cBloodTypeArr.push(BType, OType); // B, O
+					if (familyArr.includes(ABType)) cBloodTypeArr.push(AType, BType, ABType); // B, AB
 				}
 				// O 기본
-				else if (familyArr.includes(OType)) if (familyArr.includes(ABType)) cBloodTypeArr.push(AType, BType);	// O, AB
+				else if (familyArr.includes(OType)) if (familyArr.includes(ABType)) cBloodTypeArr.push(AType, BType); // O, AB
 			}
 		}
 		if (cBloodTypeArr.length > 0) {
 			const addCharArr: string[] = [];
 			cBloodTypeArr.map((cItem) => {
-				addCharArr.push(cItem.concat("형"));
-			})
-			setCBloodType(addCharArr.join(", "));
+				addCharArr.push(cItem.concat('형'));
+			});
+			setCBloodType(addCharArr.join(', '));
 		}
 	};
 
@@ -121,42 +121,50 @@ const main = () => {
 	};
 
 	return (
-		<div>
-			<div className='mb-10'>
+		<div className='p-10'>
+			<div className='mb-10 border-b-2'>
 				<h2>자식 혈액형 구하기 </h2>
 			</div>
-			<div className='mb-10'>
-				<label htmlFor='fBloodType'>
-					아빠의 혈액형
-					<select id='fBloodType' className='ml-10 w-5/12 h-8 text-sm' ref={fBloodType} defaultValue="A">
-						<option value='A' >A형</option>
-						<option value='B'>B형</option>
-						<option value='O'>O형</option>
-						<option value='AB'>AB형</option>
-					</select>
-				</label>
-			</div>
-			<div className='mb-10'>
-				<label htmlFor='mBloodType'>
-					엄마의 혈액형
-					<select id='mBloodType' className='ml-10 w-5/12 h-8 text-sm' ref={mBloodType} defaultValue="A">
+			<div>
+				<div className='mb-10 flex flex-row w-full m-1'>
+					<label htmlFor='fBloodType' className='basis-1/4 text-center'>
+						아빠의 혈액형
+					</label>
+					<select id='fBloodType' className='ml-10 h-8 text-sm basis-3/4 text-center' ref={fBloodType} defaultValue='A'>
 						<option value='A'>A형</option>
 						<option value='B'>B형</option>
 						<option value='O'>O형</option>
 						<option value='AB'>AB형</option>
 					</select>
-				</label>
-			</div>
-			<div className='mb-10 bg-center '>
-				<button type='button' className='bg-blue-500 border rounded w-2/12' onClick={refactor_funcGenerateType}>
-					혈액형은?
-				</button>
-			</div>
-			<div>
-				<label htmlFor='cBloodType'>
-					자식의 혈액형
-				</label>
-				<input type='text' id='cBloodType' className='ml-10 w-5/12' defaultValue={cBloodType} disabled={true} />
+				</div>
+				<div className='mb-10 flex flex-row w-full'>
+					<label htmlFor='mBloodType' className='basis-1/4 text-center'>
+						엄마의 혈액형
+					</label>
+					<select id='mBloodType' className='ml-10 h-8 text-sm basis-3/4 text-center' ref={mBloodType} defaultValue='A'>
+						<option value='A'>A형</option>
+						<option value='B'>B형</option>
+						<option value='O'>O형</option>
+						<option value='AB'>AB형</option>
+					</select>
+				</div>
+				<div className='ml-12 mb-10 text-center'>
+					<button type='button' className='bg-blue-500 border rounded w-2/12' onClick={refactor_funcGenerateType}>
+						자식 혈액형 알아보기
+					</button>
+				</div>
+				<div className='mb-10 flex flex-row w-full'>
+					<label htmlFor='cBloodType' className='h-10 basis-1/4 text-center'>
+						자식의 혈액형
+					</label>
+					<input
+						type='text'
+						id='cBloodType'
+						className='ml-10 basis-3/4 text-center'
+						defaultValue={cBloodType}
+						disabled={true}
+					/>
+				</div>
 			</div>
 		</div>
 	);

@@ -5,8 +5,8 @@ const main = () => {
 	const [lottoGameResult, setLottoGameResult] = useState<number[][]>([]);
 
 	useEffect(() => {
-		// fn_initSetting();
-	}, []);
+		//
+	});
 
 	/**
 	 * [함수] 로또 번호 생성기
@@ -20,17 +20,15 @@ const main = () => {
 	 * 6개 중 2개 나 1개 맞으면 6등 - 미 당첨
 	 */
 	const funcGenerateLotto = () => {
-		const resultTotalArr: number[][] = []; 	// 여러개의 로또가 들어 있는 배열 [총합]
-		let oneLottoArr: number[] = [];	// 한개의 로또가 들어가 있는 배열
+		const resultTotalArr: number[][] = []; // 여러개의 로또가 들어 있는 배열 [총합]
+		let oneLottoArr: number[] = []; // 한개의 로또가 들어가 있는 배열
 
-		// 1-1. 로또 게임수를 선택하지 않은 경우 
-		if (lottoGameCnt === 0) alert("로또 게임 수를 선택해주세요");
-
+		// 1-1. 로또 게임수를 선택하지 않은 경우
+		if (lottoGameCnt === 0) alert('로또 게임 수를 선택해주세요');
 		// 1-2. 로또 게임수를 선택 한 경우 -> 프로세스 시작
 		else {
 			// 2. while문을 반복하면서 로또 번호를 생성한다.
 			while (true) {
-
 				// 3. 1 ~ 45 범위의 랜덤한 숫자를 추출한다.
 				const _random_1_to_45: number = Math.floor(Math.random() * 45) + 1;
 
@@ -39,7 +37,6 @@ const main = () => {
 
 				// 5. [탈출] 7자리가 완성되면 종료
 				if (oneLottoArr.length === 7) {
-
 					// 6. 생성한 번호의 값을 배열에 넣는다.
 					resultTotalArr.push(oneLottoArr);
 
@@ -56,25 +53,25 @@ const main = () => {
 
 	/**
 	 * [함수] 로또 번호 클립보드 복사하기 기능
-	 * @param e 
+	 * @param e
 	 */
 	const funcLottoCopy = async (e: MouseEvent) => {
 		// 1. 자식 노드가 존재 할 경우 접근을 한다.
 		if (e.currentTarget.previousElementSibling) {
 			// 1.1. 자식 노드의 'value' 속성 값을 가져온다.
-			const siblingVal = e.currentTarget.previousElementSibling.getAttribute("value");
+			const siblingVal = e.currentTarget.previousElementSibling.getAttribute('value');
 			// 1.2. 클립보드에 가져온 값을 복사한다.
-			if (siblingVal) await navigator.clipboard.writeText(siblingVal)
-			alert("클립보드에 복사 되었습니다. 붙여넣기를 해주세요")
+			if (siblingVal) await navigator.clipboard.writeText(siblingVal);
+			alert('클립보드에 복사 되었습니다. 붙여넣기를 해주세요');
 		}
 	};
 
 	// ================================================================================================================================================================
 	return (
-		<div>
+		<div className='p-12'>
 			{/* header */}
-			<div className='mb-10'>
-				<h1>로또 게임 기능</h1>
+			<div className='mb-10 border-b-2'>
+				<h2>로또 게임 기능</h2>
 			</div>
 
 			{/* contents */}
@@ -86,7 +83,7 @@ const main = () => {
 					<div className='basis-3/4'>
 						<select
 							id='gameCnt'
-							className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-11/12 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+							className='text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-11/12 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
 							onChange={(e) => setLottoGameCnt(parseInt(e.target.value))}
 							defaultValue={lottoGameCnt}>
 							<option value={0}>게임을 선택하시오</option>
@@ -111,7 +108,6 @@ const main = () => {
 						</button>
 					</div>
 				</div>
-				<div className='w-3/12'></div>
 			</div>
 
 			<div className=''>
@@ -135,7 +131,7 @@ const main = () => {
 										<input
 											type='text'
 											id='gameResult'
-											className='block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+											className='text-center block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
 											placeholder='게임을 선택해주세요'
 											value={item.join(' ')}
 											readOnly

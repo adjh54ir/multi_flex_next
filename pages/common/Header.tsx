@@ -94,12 +94,17 @@ const Header = () => {
 									</a>
 								</Link>
 							</li>
-
-
 							<li>
-								<Link href={`/blog/EventCapturing`}>
+								<Link href={`/blog/EventDelgation`}>
 									<a href='#' className={headerContent}>
 										블로그 주제
+									</a>
+								</Link>
+							</li>
+							<li>
+								<Link href={`/test/testArea`}>
+									<a href='#' className={headerContent}>
+										testArea
 									</a>
 								</Link>
 							</li>
