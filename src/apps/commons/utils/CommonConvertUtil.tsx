@@ -84,5 +84,17 @@ class CommonConvertUtil {
 	arrayToShuffleArr = (arr: number[] | string[]): number[] | string[] => {
 		return arr.sort(() => Math.random() - 0.5);
 	};
+
+	/**
+	 * [공통함수] Object key와 value를 Array로 구성하는 함수
+	 * @param obj
+	 * @returns
+	 */
+	objectAllToArr = (obj: object): string[] | number[] => {
+		const keyObj = Object.keys(obj);
+		const valueObj = Object.values(obj);
+
+		return keyObj.concat(valueObj);
+	};
 }
 export default new CommonConvertUtil();
