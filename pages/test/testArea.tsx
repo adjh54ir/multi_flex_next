@@ -8,9 +8,12 @@ const testArea = () => {
 	}, []);
 
 	const mainTest = () => {
-		const numArr = ["가", "나", "다", "라", "마"];
-		const shuffleArr = CommonConvertUtil.arrayToShuffleArr(numArr);
-		console.log(shuffleArr);
+		/**
+		 * 응용 사용 방법 -4: 배열을 무작위로 섞어서 정렬 한다.
+		 */
+		const strArr9 = ['가', '나', '다', '라', '마'];
+		strArr9.sort(() => Math.random() - 0.5); // 랜덤 셔플 함수 수행
+		console.log(strArr9);
 
 		/**
 		 * str.toUpperCase()의 속성
