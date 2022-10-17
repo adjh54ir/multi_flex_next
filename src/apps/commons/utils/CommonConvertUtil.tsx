@@ -85,6 +85,9 @@ class CommonConvertUtil {
 		return arr.sort(() => Math.random() - 0.5);
 	};
 
+	/* *********************************************************************************************************
+	 *  Object 변형 관련 Utils
+	 **********************************************************************************************************/
 	/**
 	 * [공통함수] Object key와 value를 Array로 구성하는 함수
 	 * @param obj
@@ -95,6 +98,29 @@ class CommonConvertUtil {
 		const valueObj = Object.values(obj);
 
 		return keyObj.concat(valueObj);
+	};
+
+	/**
+	 * [공통함수] Object 함수내에서 value로 Key값을 찾는다.
+	 * @param obj
+	 * @param value
+	 * @returns
+	 */
+	objectValueToKey = (obj: object, value: string): string => {
+		//@ts-ignore
+		const objKey = Object.keys(obj).find((key) => obj[key] === value);
+		if (objKey !== undefined) return objKey;
+		else return '';
+	};
+
+	/**
+	 * [공통함수] Object 함수내에서 Key로 value 값을 찾는다.
+	 * @param obj
+	 * @param key
+	 */
+	objectKeyToValue = (obj: object, key: string) => {
+		// @ts-ignore
+		return obj[key];
 	};
 }
 export default new CommonConvertUtil();
