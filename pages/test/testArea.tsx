@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import CommonConvertUtil from '../../src/apps/commons/utils/CommonConvertUtil';
 
 const testArea = () => {
 	useEffect(() => {
@@ -7,6 +8,10 @@ const testArea = () => {
 	}, []);
 
 	const mainTest = () => {
+		const numArr = ["가", "나", "다", "라", "마"];
+		const shuffleArr = CommonConvertUtil.arrayToShuffleArr(numArr);
+		console.log(shuffleArr);
+
 		/**
 		 * str.toUpperCase()의 속성
 		 * @return {string} : 대문자로 변환한 새로운 문자열입니다.
