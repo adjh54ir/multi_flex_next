@@ -42,7 +42,7 @@ export const REGEXP_CHAR = /^[a-z|A-Z|ㄱ-ㅎ|가-힣]*$/;
 export const REGEXP_CHAR_NUM = /[0-9a-zA-Zㄱ-ㅎ가-힣]/g;
 
 // 모든 특수문자에 대한 정규식
-export const REGEXP_SPCIALCHAR = /[!?@#$%^&*():;+-=~{}<>\_\[\]\|\\\"\'\,\.\/\`\₩]/g;
+// export const REGEXP_SPCIALCHAR = /[!?@#$%^&*():;+-=~{}<>\_\[\]\|\\\"\'\,\.\/\`\₩]/g;
 
 // 특수문자 제외에 대한 정규식
 export const REGEXP_NOT_SPCIALCHAR = /[^A-Za-z0-9]/gi;
