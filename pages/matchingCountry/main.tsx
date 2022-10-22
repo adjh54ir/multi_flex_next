@@ -191,8 +191,10 @@ const main = () => {
 							<button
 								key={`btn-key-${rIdx}`}
 								className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mr-5'
+								//@ts-ignore
 								onClick={(e) => onClickBtn(e)}
 								value={rItem}
+								//@ts-ignore
 								ref={btnRef}>
 								{rItem}
 							</button>
