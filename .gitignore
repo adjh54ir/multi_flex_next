@@ -1,6 +1,11 @@
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,macos,windows,react,nextjs
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,macos,windows,react,nextjs
 
+### additon ####
+.env
+.env.*
+
+
 ### macOS ###
 # General
 .DS_Store
