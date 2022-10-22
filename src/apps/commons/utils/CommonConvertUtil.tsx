@@ -77,11 +77,20 @@ class CommonConvertUtil {
 	};
 
 	/**
-	 * [공통함수] 배열을 랜덤으로 섞는 함수
+	 * [공통함수] 숫자 배열을 랜덤으로 섞는 함수
 	 * @param arr
 	 * @returns
 	 */
-	arrayToShuffleArr = (arr: number[] | string[]): number[] | string[] => {
+	numArrToShuffleArr = (arr: number[]): number[] => {
+		return arr.sort(() => Math.random() - 0.5);
+	};
+
+	/**
+	 * [공통함수] 문자열 배열을 섞어주는 함수
+	 * @param arr
+	 * @returns
+	 */
+	strArrToShuffleArr = (arr: string[]): string[] => {
 		return arr.sort(() => Math.random() - 0.5);
 	};
 

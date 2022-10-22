@@ -73,9 +73,9 @@ const Header = () => {
 								</Link>
 							</li>
 							<li>
-								<Link href='/rockPaperScissors/main'>
+								<Link href='/matchingCountry/main'>
 									<a href='#' className={headerContent}>
-										가위바위보
+										국가/수도 맞추기 게임
 									</a>
 								</Link>
 							</li>
