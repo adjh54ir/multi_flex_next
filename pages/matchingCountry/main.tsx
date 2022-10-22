@@ -2,6 +2,7 @@ import React, { MouseEvent, useEffect, useRef, useState } from 'react';
 import CommonConvertUtil from '../../src/apps/commons/utils/CommonConvertUtil';
 import axios from 'axios';
 import { CountryType } from '../../src/apps/commons/types/CountryTypes';
+import { QueryClient, QueryClientProvider } from "react-query";
 
 /**
  * 국가와 수도 맞추기 게임
