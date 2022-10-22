@@ -4,6 +4,7 @@
 ### additon ####
 .env
 .env.*
+/.env
 
 
 ### macOS ###
